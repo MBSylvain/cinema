@@ -133,7 +133,7 @@
             <input type="submit" value="Ajouter Horaires">
         </form>
         <!-- Tarifs des places -->
-        <form method="post" action="">
+        <form method="post" action="../model/tarifModel.php">
             <fieldset id="tarifs-places">
                 <legend>Tarifs des Places</legend>
                 <label for="tarif_enfant">Tarif Enfant :</label>
