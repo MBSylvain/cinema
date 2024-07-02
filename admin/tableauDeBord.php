@@ -40,6 +40,8 @@
             <?php } ?>
         </form>
         <!-- Information sur le film -->
+
+        <!-- Information sur le film -->
         <form method="post" action="../controleurs/film.php">
             <fieldset id="information-film">
                 <legend>Informations sur le Film</legend>
@@ -65,73 +67,80 @@
         </form>
         <!-- Horaires du film -->
         <h1>Ajouter des Horaires</h1>
+
         <form action="../controleurs/horaire.php" method="post">
-            <fieldset>
-                <legend>Jours:</legend>
-                <label for="lundi">Lundi</label>
-                <input type="checkbox" id="lundi" name="jours[]" value="Lundi">
+            <div class="ajoutHoraire">
+                <div class="jour">
+                    <div class="SelectJour">
+                        <legend>Jours:</legend>
+                        <label for="lundi">Lundi</label>
+                        <input type="checkbox" id="lundi" name="jours[]" value="Lundi">
+                        <br>
+                        <label for="mardi">Mardi</label>
+                        <input type="checkbox" id="mardi" name="jours[]" value="Mardi">
+                        <br>
+                        <label for="mercredi">Mercredi</label>
+                        <input type="checkbox" id="mercredi" name="jours[]" value="Mercredi">
+                        <br>
+                        <label for="jeudi">Jeudi</label>
+                        <input type="checkbox" id="jeudi" name="jours[]" value="Jeudi">
+                        <br>
+                        <label for="vendredi">Vendredi</label>
+                        <input type="checkbox" id="vendredi" name="jours[]" value="Vendredi">
+                        <br>
+                        <label for="samedi">Samedi</label>
+                        <input type="checkbox" id="samedi" name="jours[]" value="Samedi">
+                        <br>
+                        <label for="dimanche">Dimanche</label>
+                        <input type="checkbox" id="dimanche" name="jours[]" value="Dimanche">
+                    </div>
+                </div>
                 <br>
-                <label for="mardi">Mardi</label>
-                <input type="checkbox" id="mardi" name="jours[]" value="Mardi">
-                <br>
-                <label for="mercredi">Mercredi</label>
-                <input type="checkbox" id="mercredi" name="jours[]" value="Mercredi">
-                <br>
-                <label for="jeudi">Jeudi</label>
-                <input type="checkbox" id="jeudi" name="jours[]" value="Jeudi">
-                <br>
-                <label for="vendredi">Vendredi</label>
-                <input type="checkbox" id="vendredi" name="jours[]" value="Vendredi">
-                <br>
-                <label for="samedi">Samedi</label>
-                <input type="checkbox" id="samedi" name="jours[]" value="Samedi">
-                <br>
-                <label for="dimanche">Dimanche</label>
-                <input type="checkbox" id="dimanche" name="jours[]" value="Dimanche">
-            </fieldset>
-            <br>
+                <div class="creneuax">
+                    <label for="creneau1_matin">Créneau 1 Matin:</label>
+                    <input type="time" id="creneau1_matin" name="creneau1_matin">
+                    <br><br>
 
-            <label for="creneau1_matin">Créneau 1 Matin:</label>
-            <input type="time" id="creneau1_matin" name="creneau1_matin">
-            <br><br>
+                    <label for="creneau2_matin">Créneau 2 Matin:</label>
+                    <input type="time" id="creneau2_matin" name="creneau2_matin">
+                    <br><br>
 
-            <label for="creneau2_matin">Créneau 2 Matin:</label>
-            <input type="time" id="creneau2_matin" name="creneau2_matin">
-            <br><br>
+                    <label for="creneau3_matin">Créneau 3 Matin:</label>
+                    <input type="time" id="creneau3_matin" name="creneau3_matin">
+                    <br><br>
 
-            <label for="creneau3_matin">Créneau 3 Matin:</label>
-            <input type="time" id="creneau3_matin" name="creneau3_matin">
-            <br><br>
+                    <label for="creneau4_matin">Créneau 4 Matin:</label>
+                    <input type="time" id="creneau4_matin" name="creneau4_matin">
+                    <br><br>
 
-            <label for="creneau4_matin">Créneau 4 Matin:</label>
-            <input type="time" id="creneau4_matin" name="creneau4_matin">
-            <br><br>
+                    <label for="creneau1_apresmidi">Créneau 1 Après-midi:</label>
+                    <input type="time" id="creneau1_apresmidi" name="creneau1_apresmidi">
+                    <br><br>
 
-            <label for="creneau1_apresmidi">Créneau 1 Après-midi:</label>
-            <input type="time" id="creneau1_apresmidi" name="creneau1_apresmidi">
-            <br><br>
+                    <label for="creneau2_apresmidi">Créneau 2 Après-midi:</label>
+                    <input type="time" id="creneau2_apresmidi" name="creneau2_apresmidi">
+                    <br><br>
 
-            <label for="creneau2_apresmidi">Créneau 2 Après-midi:</label>
-            <input type="time" id="creneau2_apresmidi" name="creneau2_apresmidi">
-            <br><br>
+                    <label for="creneau3_apresmidi">Créneau 3 Après-midi:</label>
+                    <input type="time" id="creneau3_apresmidi" name="creneau3_apresmidi">
+                    <br><br>
 
-            <label for="creneau3_apresmidi">Créneau 3 Après-midi:</label>
-            <input type="time" id="creneau3_apresmidi" name="creneau3_apresmidi">
-            <br><br>
+                    <label for="creneau4_apresmidi">Créneau 4 Après-midi:</label>
+                    <input type="time" id="creneau4_apresmidi" name="creneau4_apresmidi">
+                    <br><br>
 
-            <label for="creneau4_apresmidi">Créneau 4 Après-midi:</label>
-            <input type="time" id="creneau4_apresmidi" name="creneau4_apresmidi">
-            <br><br>
+                    <label for="id_cinema">ID Cinéma:</label>
+                    <input type="number" id="id_cinema" name="id_cinema" required>
+                    <br><br>
 
-            <label for="id_cinema">ID Cinéma:</label>
-            <input type="number" id="id_cinema" name="id_cinema" required>
-            <br><br>
+                    <label for="id_film">ID Film:</label>
+                    <input type="number" id="id_film" name="id_film" required>
+                    <br><br>
 
-            <label for="id_film">ID Film:</label>
-            <input type="number" id="id_film" name="id_film" required>
-            <br><br>
+                    <input type="submit" value="Ajouter Horaires">
+                </div>
+            </div>
 
-            <input type="submit" value="Ajouter Horaires">
         </form>
         <!-- Tarifs des places -->
         <form method="post" action="../model/tarifModel.php">

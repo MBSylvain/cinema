@@ -23,10 +23,32 @@ var_dump($result); ?>
             <?php foreach ($result as $row) { ?>
                 <option value="<?php echo htmlspecialchars($row['Nom']); ?>"><?php echo htmlspecialchars($row['Nom']); ?></option>
             <?php } ?>
+            <input type="submit" value="Valider les partenaires">
+
         </select>
 
     </fieldset>
 
 <?php } else { ?>
-    <? echo "0 résultats"; ?>
+    <? echo "0 résultats";     ?>
 <?php } ?>
+
+<?php
+function listeCinema($result)
+{
+    if (!empty($result)) { ?>
+        <fieldset id="selection-cinema">
+            <legend>Sélection du Cinéma</legend>
+            <label for="cinema">Sélectionnez un cinéma :</label>
+            <select multiple name="cinema" id="cinema" required>
+                <?php foreach ($result as $row) { ?>
+                    <option value="<?php echo htmlspecialchars($row['Nom']); ?>"><?php echo htmlspecialchars($row['Nom']); ?></option>
+                <?php } ?>
+            </select>
+        </fieldset>
+    <?php } else { ?>
+        <?php echo "0 résultats"; ?>
+<?php }
+}
+?>
+<?php listeCinema($result); ?>
