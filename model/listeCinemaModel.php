@@ -15,19 +15,20 @@ $result = $stmt->fetchAll();
 var_dump($result); ?>
 
 <?php if (!empty($result)) { ?>
-    <fieldset id="selection-cinema">
-        <legend>Sélection du Cinéma</legend>
-        <label for="cinema">Sélectionnez un cinéma :</label>
-        <select multiple name="cinema" id="cinema" required>
+    <form action="" method="post">
+
+        <fieldset id="selection-cinema">
+            <legend>Sélection du Cinéma</legend>
+            <label for="cinema">Sélectionnez un cinéma :</label>
 
             <?php foreach ($result as $row) { ?>
-                <option value="<?php echo htmlspecialchars($row['Nom']); ?>"><?php echo htmlspecialchars($row['Nom']); ?></option>
+                <input type="checkbox" name="cinema[]" value="<?php echo htmlspecialchars($row['Nom']); ?>" id="cinema-<?php echo htmlspecialchars($row['Nom']); ?>">
+                <label for="cinema-<?php echo htmlspecialchars($row['Nom']); ?>"><?php echo htmlspecialchars($row['Nom']); ?></label>
             <?php } ?>
             <input type="submit" value="Valider les partenaires">
 
-        </select>
-
-    </fieldset>
+        </fieldset>
+    </form>
 
 <?php } else { ?>
     <? echo "0 résultats";     ?>
