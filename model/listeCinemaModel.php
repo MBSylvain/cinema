@@ -15,41 +15,31 @@ $result = $stmt->fetchAll();
 var_dump($result); ?>
 
 <?php if (!empty($result)) { ?>
+
+
     <form action="" method="post">
-
+        <legend>Sélection du Cinéma</legend>
+        <label for="cinema">Sélectionnez un cinéma :</label>
         <fieldset id="selection-cinema">
-            <legend>Sélection du Cinéma</legend>
-            <label for="cinema">Sélectionnez un cinéma :</label>
-
             <?php foreach ($result as $row) { ?>
-                <input type="checkbox" name="cinema[]" value="<?php echo htmlspecialchars($row['Nom']); ?>" id="cinema-<?php echo htmlspecialchars($row['Nom']); ?>">
+
+                <input type="checkbox" name="cinema[]" value="<?php echo htmlspecialchars($row['ID_Cinema']); ?>" id="<?php $row['Nom']; ?>">
                 <label for="cinema-<?php echo htmlspecialchars($row['Nom']); ?>"><?php echo htmlspecialchars($row['Nom']); ?></label>
             <?php } ?>
+            <input type="hidden" name="test" value=<?= $row['ID_Cinema'] ?>>
             <input type="submit" value="Valider les partenaires">
-
         </fieldset>
+
     </form>
 
 <?php } else { ?>
     <? echo "0 résultats";     ?>
 <?php } ?>
-
 <?php
-function listeCinema($result)
-{
-    if (!empty($result)) { ?>
-        <fieldset id="selection-cinema">
-            <legend>Sélection du Cinéma</legend>
-            <label for="cinema">Sélectionnez un cinéma :</label>
-            <select multiple name="cinema" id="cinema" required>
-                <?php foreach ($result as $row) { ?>
-                    <option value="<?php echo htmlspecialchars($row['Nom']); ?>"><?php echo htmlspecialchars($row['Nom']); ?></option>
-                <?php } ?>
-            </select>
-        </fieldset>
-    <?php } else { ?>
-        <?php echo "0 résultats"; ?>
-<?php }
+if ($_SERVER["REQUEST_METHOD"] == "POST"); {
+    $id_cinema = $_POST['cinema'];
+    foreach ($id_cinema as $test) {;
+        echo ($test);
+    }
 }
 ?>
-<?php listeCinema($result); ?>
