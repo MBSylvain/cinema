@@ -1,23 +1,44 @@
 <?php
 session_start();
-// Récupération des information du formulaire de connexion 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    var_dump($email);
+
     include('../model/connexionBD.php');
-    //Lecture de la table utilisateur
-    $utilisateur = 'SELECT id, nom, prenom, email, password, role FROM Utilisateurs';
+
+    // Fetch the user by email
+    $utilisateur = 'SELECT id, nom, prenom, email, password, role FROM Utilisateurs WHERE email = :email';
     $stmt = $pdo->prepare($utilisateur);
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    var_dump($user);
-    if (password_verify($password, $user['email'])) {
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['email'] = $user['email'];
-        echo ('Connexion réussi Vous allez être redirigé vers le tableau de bord');
-        exit();
-    } else {
-        $error = "Invalid password.";
+    $stmt->bindParam(':email', $email);
+
+    try {
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Check if the user exists and the password is correct
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['email'] = $user['email'];
+
+            echo 'Connexion réussie. Vous allez être redirigé vers le tableau de bord';
+
+            // Authentication by role
+            if ($user['role'] == 'administrateur') {
+                header('Location: ..admin/tableauDeBord.php'); // Admin dashboard URL
+            } elseif ($user['role'] == 'manageur') {
+                header('Location: ..admin/tableauDeBord.php'); // User dashboard URL
+            } else {
+                header('Location: ..admin/tableauDeBord.php'); // Default dashboard URL
+            }
+            exit();
+        } else {
+            echo 'Le mot de passe ou l\'email est invalide';
+            sleep(5);
+            header('Location: ../login.php');
+            exit();
+        }
+    } catch (PDOException $e) {
+        echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
     }
 }
