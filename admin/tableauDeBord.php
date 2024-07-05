@@ -15,7 +15,7 @@
         <a href="#information-film">Information sur le Film</a>
         <a href="#horaires-film">Horaires du Film</a>
         <a href="#tarifs-places">Tarifs des Places</a>
-        <a href="#deconnexion">Se Déconnecter</a>
+        <a href="../controleurs/deconnexionControle.php">Déconnexion</a>
     </div>
     <div class="content">
         <h1>Ajouter un Film</h1>
@@ -157,13 +157,14 @@
 
 
             <!-- Lien de déconnexion -->
-            <fieldset id="deconnexion">
-                <legend>Se Déconnecter</legend>
-                <a href="votre_script_de_deconnexion.php">Déconnexion</a>
-            </fieldset>
+
             <input type="submit" value="Valider les partenaires">
 
         </form>
+        <fieldset id="deconnexion">
+            <legend>Se Déconnecter</legend>
+            <a href="../controleurs/deconnexionControle.php">Déconnexion</a>
+        </fieldset>
     </div>
 </body>
 

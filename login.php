@@ -19,7 +19,6 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
-    <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
 </body>
 <?php include('includes/footer.php'); ?>
 

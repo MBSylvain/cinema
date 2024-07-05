@@ -34,28 +34,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Insertion des horaires et tarifs pour chaque cinéma sélectionné
     foreach ($id_cinema as $cinema) {
         foreach ($jours as $jour) {
-            $SqlHoraire = "INSERT INTO Horaires (Jour, Creneau1_Matin, Creneau2_Matin, Creneau3_Matin, Creneau4_Matin, Creneau1_ApresMidi, Creneau2_ApresMidi, Creneau3_ApresMidi, Creneau4_ApresMidi, ID_Cinema, ID_Film) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $stmtH = $pdo->prepare($SqlHoraire);
-            $resultHoraire = $stmtH->execute([
-                $jour,
-                $creneau1_matin,
-                $creneau2_matin,
-                $creneau3_matin,
-                $creneau4_matin,
-                $creneau1_apresmidi,
-                $creneau2_apresmidi,
-                $creneau3_apresmidi,
-                $creneau4_apresmidi,
-                $cinema,
-                $id_film
-            ]);
+            include_once('../model/HoraireModel.php');
             echo "Nouveau record créé avec succès pour le cinéma ID $cinema, jour $jour.<br>";
         }
     }
     foreach ($id_cinema as $cinema) {
-        include_once('../model/filmModelRead.php');
+        include_once('../model/TarifModelRead.php');
         if ($resultTarif) {
-            include_once('../model/tarifModel.php');
+            include_once('../model/TarifModelUpdate.php');
             echo "Tarifs ajoutés pour le cinéma ID $cinema.<br>";
         }
     }
