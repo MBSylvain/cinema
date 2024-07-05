@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['email'] = $user['email'];
 
             echo 'Connexion réussie. Vous allez être redirigé vers le tableau de bord';
-
+            connexionOk();
             // Authentication by role
             if ($user['role'] == 'administrateur') {
                 header('Location: ..admin/tableauDeBord.php'); // Admin dashboard URL
@@ -41,4 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch (PDOException $e) {
         echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
     }
+}
+
+function connexionOk()
+{
+    echo 'Connexion réussie. Vous allez être redirigé vers le tableau de bord';
 }

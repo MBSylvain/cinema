@@ -21,5 +21,6 @@
 
     <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
 </body>
+<?php include('includes/footer.php'); ?>
 
 </html>

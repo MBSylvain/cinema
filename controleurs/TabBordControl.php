@@ -29,14 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Connexion à la BDD
     include('../model/connexionBD.php');
-
-    // Insertion des informations du film dans la BDD
-    $SqlFilm = 'INSERT INTO Film (Titre, Réalisateur, DateDeSortie, Durée, Affiche) VALUES (?, ?, ?, ?, ?)';
-    $stmtFilm = $pdo->prepare($SqlFilm);
-    $resultFilm = $stmtFilm->execute([$titre, $realisateur, $date_de_sortie, $duree, $affiche]);
-
-    // Récupérer l'ID du film inséré
-    $id_film = $pdo->lastInsertId();
+    include('../model/filmModel.php');
 
     // Insertion des horaires et tarifs pour chaque cinéma sélectionné
     foreach ($id_cinema as $cinema) {
@@ -60,15 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     foreach ($id_cinema as $cinema) {
-        $qlTarif = "SELECT tarif_enfant, tarif_adulte, tarif_senior, tarif_etudiant FROM Tarifs WHERE ID = ?";
-        $tmtTarif = $pdo->prepare($qlTarif);
-        $tmtTarif->execute([$cinema]);
-        $resultTarif = $tmtTarif->fetch(PDO::FETCH_ASSOC);
-
+        include_once('../model/filmModelRead.php');
         if ($resultTarif) {
-            $SqlTarif = "UPDATE Tarifs SET tarif_enfant = ?, tarif_adulte = ?, tarif_senior = ?, tarif_etudiant = ? WHERE ID = ?";
-            $stmtTarif = $pdo->prepare($SqlTarif);
-            $ResultTarif = $stmtTarif->execute([$tarif_enfant, $tarif_adulte, $tarif_senior, $tarif_etudiant, $cinema]);
+            include_once('../model/tarifModel.php');
             echo "Tarifs ajoutés pour le cinéma ID $cinema.<br>";
         }
     }

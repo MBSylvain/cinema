@@ -7,8 +7,7 @@ if (isset($_POST['submit'])) {
     $ville = $_POST['ville'];
     $codePostal = $_POST['codePostal'];
 
-    $stm = $pdo->prepare('INSERT INTO partenaire (Nom, Adresse, Ville, CodePostal) VALUES(?, ?, ?, ? )');
-    $stm->execute([$nom, $adresse, $ville, $codePostal]);
+    include_once('./model/cinemaModel.php');
     if ($stm) {
         echo "Votre prestation a bien été enregistrée dans la base de données";
     } else {
