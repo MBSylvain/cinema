@@ -1,5 +1,5 @@
 <?php
-// Fetch the user by email
-$utilisateur = 'SELECT id, nom, prenom, email, password, role FROM Utilisateurs WHERE email = :email';
-$stmt = $pdo->prepare($utilisateur);
+$stmt = $pdo->prepare('SELECT id, email, password, role FROM Utilisateurs WHERE email = :email');
 $stmt->bindParam(':email', $email);
+$stmt->execute();
+$user = $stmt->fetch();
