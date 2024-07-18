@@ -2,7 +2,7 @@
 
 <body>
     <h2>Login</h2>
-    <form action="../cinema/controleurs/logingControl.php" method="post" class="text-center">
+    <form action="../cinema/controleurs/logingControl.php" method="post" class="container text-center">
         <div class="form-group text-center">
             <label for="email">Email address</label>
             <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
